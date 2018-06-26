@@ -1,0 +1,8 @@
+<h1>User Show</h1>
+<p>User: <%= @user.name %>, Email: <%= @user.email %> </p> 
+<ul> 
+<% @events.each do |event| %>
+	<li>Event:<%= event.title%>, Date: <%= event.date %> </li>
+
+</ul>
+<% end %>
