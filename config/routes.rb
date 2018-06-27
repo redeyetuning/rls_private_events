@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+	post 'attendances', to: 'attendances#create'
   get 'events/new'
   get 'events/show'
   get    '/login',   to: 'sessions#new'

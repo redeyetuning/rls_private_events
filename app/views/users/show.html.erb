@@ -1,8 +1,28 @@
 <h1>User Show</h1>
 <p>User: <%= @user.name %>, Email: <%= @user.email %> </p> 
-<ul> 
-<% @events.each do |event| %>
-	<li>Event:<%= event.title%>, Date: <%= event.date %> </li>
-
-</ul>
+<h3>Events Created</h3>
+<% if @user.events %>
+	<ul> 
+	<% @user.events.each do |event| %>
+		<li>Event:<%= event.title%>, Date: <%= event.date %> </li>
+	<% end %>
+	</ul>
 <% end %>
+
+<h3>Upcoming Events</h3>
+<% if @user.attended_events.future %>
+	<ul>
+	<% @user.attended_events.future.each do |event| %>
+		<li><%= event.title %></li>
+	<% end %>
+	</ul>
+<% end %>
+
+<h3>Past Events</h3>
+<% if @user.attended_events.past %>
+	<ul>
+	<% @user.attended_events.past.each do |event| %>
+		<li><%= event.title %></li>
+	<% end %>
+	</ul>
+<% end %>	

@@ -1,5 +1,13 @@
 <h1>All Events</h1>
-<ul><% @events.each do |event|%>
-	<li>Event:<%= event.title%>, Location:<%= event.location %>, Date: <%= event.date %>, Creator: <%= event.creator.name %> </li>
+<h3>Upcomin events</h3>
+<ul><% @events.future.each do |event|%>
+	<li>Event: <%= link_to event.title, event_path(event)%>, Location: <%= event.location %>, Date: <%= event.date %>, Creator: <%= event.creator.name %>, <%= link_to "Join event", attendances_path(event_id: event.id), method: 'post' %> </li>
+	<% end %>
+</ul>
+
+<h3>Past Events</h3>
+
+<ul><% @events.past.each do |event|%>
+	<li>Event: <%= link_to event.title, event_path(event)%>, Location: <%= event.location %>, Date: <%= event.date %>, Creator: <%= event.creator.name %>, <%= link_to "Join event", attendances_path(event_id: event.id), method: 'post' %> </li>
 	<% end %>
 </ul>
